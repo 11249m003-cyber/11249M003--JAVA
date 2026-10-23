@@ -1,0 +1,54 @@
+
+class OrderPlacement extends Thread {
+   OrderPlacement() {
+   }
+
+   public void run() {
+      System.out.println("Order placement started...");
+
+      try {
+         Thread.sleep(1000L);
+      } catch (InterruptedException var2) {
+         System.out.println(var2);
+      }
+
+      System.out.println("Order placed successfully.");
+   }
+}
+
+class OrderDelivery extends Thread {
+   OrderDelivery() {
+   }
+
+   public void run() {
+      System.out.println("Order delivery started...");
+
+      try {
+         Thread.sleep(1000L);
+      } catch (InterruptedException var2) {
+         System.out.println(var2);
+      }
+
+      System.out.println("Order delivered successfully.");
+   }
+}
+
+public class FoodDelivery {
+   public FoodDelivery() {
+   }
+
+   public static void main(String[] var0) {
+      OrderPlacement var1 = new OrderPlacement();
+      OrderDelivery var2 = new OrderDelivery();
+      var1.start();
+
+      try {
+         var1.join();
+      } catch (InterruptedException var4) {
+         System.out.println(var4);
+      }
+
+      var2.start();
+   }
+}
+
